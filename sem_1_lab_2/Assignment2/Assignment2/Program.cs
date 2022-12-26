@@ -98,69 +98,353 @@ namespace Percolation
 
             int[] test_status = new int[5 * 5 + 1];
             init_status(test_status);
+
+            bool TestInit_indexRes = TestInit_index();
+            bool TestInit_statusRes = TestInit_index();
+            bool TestOpenRes = TestOpen(test_original, test_index, test_status);
+            bool TestUnionRes = TestUnion(test_index, test_status);
+            bool TestConnectedRes = TestConnected(test_status);
+            bool TestRootres = TestRoot(test_status);
+            bool TestisOpenRes = TestisOpen(test_original);
+            bool TestisFullRes = TestisFull(test_original);
+            bool TestNumberOfOpenSitesRes = TestNumberOfOpenSites(test_original, test_index, test_status);
+            bool TestPercolatesRes = TestPercolates(test_original, test_index, test_status);
         }
 
         static int[,] init_index(int[,] array)
         {
+            int count = 1;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    array[i, j] = count;
+                    count++;
+                }
+            }
+
             return array;
         }
         static int[] init_status(int[] array)
         {
+            int count = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                array[i] = count;
+                count++;
+            }
+
             return array;
         }
 
         static int[,] init_r(int[,] array)
         {
+            Random rnd = new Random();
+            int x;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    x = rnd.Next(2);
+
+                    if ((i == 0) && (x == 1))
+                    {
+                        array[i, j] = 2;
+                    }
+                    else
+                    {
+                        array[i, j] = x;
+                    }
+                }
+            }
+
             return array;
         }
         static void union(int site_1, int site_2, int[,] index, int[] status)
         {
-            
+            int site_1_Root = root(site_1, status);
+            int site_2_Root = root(site_2, status);
+            status[site_2_Root] = site_1_Root;
         }
 
         static Boolean connected(int site_1, int site_2, int[] status)
         {
-            
+            if (root(site_1, status) == root(site_2, status))
+            {
+                return true;
+            }
+            return false;
         }
 
         static int root(int site_1, int[] status)
         {
-            
+            while (site_1 != status[site_1])
+            {
+                site_1 = status[site_1];
+            }
+            return site_1;
         }
 
         static void Open(int row, int col, int[,] original, int[,] index, int[] status)
         {
-            
+            int site_0;
+            int site = index[row, col];
+            if (row == 0)
+            {
+                original[row, col] = 2;
+                union(0, site, index, status);
+            }
+            else
+            {
+                original[row, col] = 1;
+
+                if (isFull(row - 1, col, original) == true)
+                {
+                    site_0 = index[row - 1, col];
+                    union(site_0, site, index, status);
+                    if (connected(0, site, status) == true)
+                    {
+                        original[row, col] = 2;
+                    }
+                    if ((row != original.GetLength(0) - 1) && (isOpen(row + 1, col, original) == true))
+                    {
+                        Open(row + 1, col, original, index, status);
+                    }
+                    if ((col != 0) && (isOpen(row, col - 1, original) == true))
+                    {
+                        Open(row, col - 1, original, index, status);
+                    }
+                    if ((col != original.GetLength(1) - 1) && (isOpen(row, col + 1, original) == true))
+                    {
+                        Open(row, col + 1, original, index, status);
+                    }
+                }
+
+                else if ((row != original.GetLength(0) - 1) && (isFull(row + 1, col, original) == true))
+                {
+                    site_0 = index[row + 1, col];
+                    union(site_0, site, index, status);
+                    if (connected(0, site, status) == true)
+                    {
+                        original[row, col] = 2;
+                    }
+                    if ((row != 0) && ((isOpen(row - 1, col, original) == true)))
+                    {
+                        Open(row - 1, col, original, index, status);
+                    }
+                    if ((col != 0) && (isOpen(row, col - 1, original) == true))
+                    {
+                        Open(row, col - 1, original, index, status);
+                    }
+                    if ((col != original.GetLength(1) - 1) && (isOpen(row, col + 1, original) == true))
+                    {
+                        Open(row, col + 1, original, index, status);
+                    }
+                }
+
+                else if ((col != 0) && (isFull(row, col - 1, original) == true))
+                {
+                    site_0 = index[row, col - 1];
+                    union(site_0, site, index, status);
+                    if (connected(0, site, status) == true)
+                    {
+                        original[row, col] = 2;
+                    }
+                    if ((col != original.GetLength(1) - 1) && (isOpen(row, col + 1, original) == true))
+                    {
+                        Open(row, col + 1, original, index, status);
+                    }
+                    if (isOpen(row - 1, col, original) == true)
+                    {
+                        Open(row - 1, col, original, index, status);
+                    }
+                    if ((row != original.GetLength(0) - 1) && (isOpen(row + 1, col, original) == true))
+                    {
+                        Open(row + 1, col, original, index, status);
+                    }
+                }
+
+                else if ((col != original.GetLength(1) - 1) && (isFull(row, col + 1, original) == true))
+                {
+                    site_0 = index[row, col + 1];
+                    union(site_0, site, index, status);
+                    if (connected(0, site, status) == true)
+                    {
+                        original[row, col] = 2;
+                    }
+                    if ((col != 0) && (isOpen(row, col - 1, original) == true))
+                    {
+                        Open(row, col - 1, original, index, status);
+                    }
+                    if (isOpen(row - 1, col, original) == true)
+                    {
+                        Open(row - 1, col, original, index, status);
+                    }
+                    if ((row != original.GetLength(0) - 1) && (isOpen(row + 1, col, original) == true))
+                    {
+                        Open(row + 1, col, original, index, status);
+                    }
+                }
+            }
         }
 
         static void check_random(int row, int col, int[,] original, int[,] index, int[] status)
         {
-            
+            int site_0;
+            int site = index[row, col];
+            if (isOpen(row, col, original))
+            {
+                if (isFull(row - 1, col, original) == true)
+                {
+                    site_0 = index[row - 1, col];
+                    union(site_0, site, index, status);
+                    if (connected(0, site, status) == true)
+                    {
+                        original[row, col] = 2;
+                    }
+                    if ((row != original.GetLength(0) - 1) && (isOpen(row + 1, col, original) == true))
+                    {
+                        Open(row + 1, col, original, index, status);
+                    }
+                    if ((col != 0) && (isOpen(row, col - 1, original) == true))
+                    {
+                        Open(row, col - 1, original, index, status);
+                    }
+                    if ((col != original.GetLength(1) - 1) && (isOpen(row, col + 1, original) == true))
+                    {
+                        Open(row, col + 1, original, index, status);
+                    }
+                }
+
+                else if ((row != original.GetLength(0) - 1) && (isFull(row + 1, col, original) == true))
+                {
+                    site_0 = index[row + 1, col];
+                    union(site_0, site, index, status);
+                    if (connected(0, site, status) == true)
+                    {
+                        original[row, col] = 2;
+                    }
+                    if ((row != 0) && ((isOpen(row - 1, col, original) == true)))
+                    {
+                        Open(row - 1, col, original, index, status);
+                    }
+                    if ((col != 0) && (isOpen(row, col - 1, original) == true))
+                    {
+                        Open(row, col - 1, original, index, status);
+                    }
+                    if ((col != original.GetLength(1) - 1) && (isOpen(row, col + 1, original) == true))
+                    {
+                        Open(row, col + 1, original, index, status);
+                    }
+                }
+
+                else if ((col != 0) && (isFull(row, col - 1, original) == true))
+                {
+                    site_0 = index[row, col - 1];
+                    union(site_0, site, index, status);
+                    if (connected(0, site, status) == true)
+                    {
+                        original[row, col] = 2;
+                    }
+                    if ((col != original.GetLength(1) - 1) && (isOpen(row, col + 1, original) == true))
+                    {
+                        Open(row, col + 1, original, index, status);
+                    }
+                    if (isOpen(row - 1, col, original) == true)
+                    {
+                        Open(row - 1, col, original, index, status);
+                    }
+                    if ((row != original.GetLength(0) - 1) && (isOpen(row + 1, col, original) == true))
+                    {
+                        Open(row + 1, col, original, index, status);
+                    }
+                }
+
+                else if ((col != original.GetLength(1) - 1) && (isFull(row, col + 1, original) == true))
+                {
+                    site_0 = index[row, col + 1];
+                    union(site_0, site, index, status);
+                    if (connected(0, site, status) == true)
+                    {
+                        original[row, col] = 2;
+                    }
+                    if ((col != 0) && (isOpen(row, col - 1, original) == true))
+                    {
+                        Open(row, col - 1, original, index, status);
+                    }
+                    if (isOpen(row - 1, col, original) == true)
+                    {
+                        Open(row - 1, col, original, index, status);
+                    }
+                    if ((row != original.GetLength(0) - 1) && (isOpen(row + 1, col, original) == true))
+                    {
+                        Open(row + 1, col, original, index, status);
+                    }
+                }
+            }
         }
 
         static Boolean isOpen(int row, int col, int[,] array)
         {
-            
+            if (array[row, col] == 1)
+            {
+                return true;
+            }
+            return false;
         }
 
         static Boolean isFull(int row, int col, int[,] array)
         {
-            
+            if (array[row, col] == 2)
+            {
+                return true;
+            }
+            return false;
         }
 
         static int numberOfOpenSites(int[,] array)
         {
+            int numberOfOpenSites = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (array[i, j] == 1 || array[i, j] == 2)
+                    {
+                        numberOfOpenSites += 1;
+                    }
+                }
+            }
+
             return numberOfOpenSites;
         }
 
         static Boolean percolates(int[,] array)
         {
-            
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                if (array[array.GetLength(0) - 1, j] == 2)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         static void print(int[,] array)
         {
-            
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
         }
 
         static Boolean TestInit_index()
