@@ -46,11 +46,36 @@ class Program
 
     static void InsertionSort(string[] array)
     {
-        
+        for (int i = 1; i < array.Length; i++)
+        {
+            string key = array[i];
+            int j = i - 1;
+            while (j >= 0 && StringsCompare(array[j], key) > 0)
+            {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+            array[j + 1] = key;
+        }
     }
 
     static int StringsCompare(string s1, string s2)
     {
-        
+        int MinLen = Math.Min(s1.Length, s2.Length);
+
+        for (int i = 0; i < MinLen; i++)
+        {
+            if (s1[i] != s2[i])
+            {
+                return s1[i] - s2[i];
+            }
+        }
+
+        if (s1.Length != s2.Length)
+        {
+            return s1.Length - s2.Length;
+        }
+
+        return 0;
     }
 }
