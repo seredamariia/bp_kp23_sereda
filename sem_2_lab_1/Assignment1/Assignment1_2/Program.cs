@@ -15,6 +15,12 @@ class Program
 
         using (StreamWriter sw = File.CreateText(NumbersFilePath))
         {
+            for (int i = 0; i < 15; i++)
+            {
+                int number = rand.Next(100);
+                sw.Write(number + " ");
+                numbers[i] = number;
+            }
         }
 
         /*test cases:
@@ -26,8 +32,17 @@ class Program
                 numbers.txt: 34 72 85 10 51 92 36 28 40 37 80 0 16 15 18
          */
 
+        for (int i = 0; i < 15; i++)
+        {
+            if (numbers[i] > max)
+            {
+                max = numbers[i];
+            }
+        }
+
         using (StreamWriter sw = File.CreateText(MaxFilePath))
         {
+            sw.Write(max);
         }
 
         /*test cases:
