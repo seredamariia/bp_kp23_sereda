@@ -14,6 +14,21 @@ class Program
         string[,] HighScoresRecords = new string[lines.Length, 3];
         int HighScoresCount = 0;
 
+        /*test cases:
+            case 1:
+                students.txt: Jorja,Elliott,81
+                              Daniel,Saunders,93
+                              Margie,Page,69
+            case 2:
+                students.txt: Zahra,Massey,75
+                              Eden,Nunez,96
+                              Cai,Sims,83
+            case 3:
+                students.txt: Isla,Bush,95
+                              Jacqueline,Rasmussen,78
+                              Saskia,Pugh,98
+         */
+
         using (BinaryWriter writer = new BinaryWriter(File.Open(BinaryFilePath, FileMode.Create)))
         {
             
@@ -31,6 +46,17 @@ class Program
         {
             
         }
+
+        /*test cases:
+            case 1:
+                There are no students with the score  greater than 95 points
+            case 2:
+                Number of students with high scores: 1
+                Eden Nunez 96
+            case 3:
+                Number of students with high scores: 1
+                Saskia Pugh 98
+         */
     }
 
     static string[] Split(string line, string[] data)
