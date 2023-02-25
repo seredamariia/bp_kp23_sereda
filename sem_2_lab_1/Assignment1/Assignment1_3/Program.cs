@@ -30,17 +30,17 @@ class Program
 
         /*test cases:
             case 1:
-                input.txt: basics
-                           office
-                           programming
+                output.txt: basics
+                            office
+                            programming
             case 2:
-                input.txt: adorable
-                           cat
-                           catfish
+                output.txt: adorable
+                            cat
+                            catfish
             case 3:
-                input.txt: mainstream
-                           organisation
-                           queen
+                output.txt: mainstream
+                            organisation
+                            queen
          */
     }
 
