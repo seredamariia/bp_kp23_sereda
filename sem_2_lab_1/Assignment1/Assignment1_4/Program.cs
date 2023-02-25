@@ -28,6 +28,22 @@ class Program
 
         bool found = false;
 
+        for (int i = 0; i < lines.Length; i++)
+        {
+            Split(lines[i], data);
+            if (Int32.Parse(data[2]) < 60)
+            {
+                found = true;
+                Console.Write(data[0] + " " + data[1] + " " + data[2] + "\n");
+            }
+
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("There are no student with the score that is less than 60 points");
+        }
+
         /*test cases:
             case 1:
                 Fleur Salazar 52
@@ -43,6 +59,25 @@ class Program
 
     static string[] Split(string line, string[] data)
     {
-        
+        string substring = "";
+        int counter = 0;
+
+        for (int i = 0; i < line.Length; i++)
+        {
+            if (line[i] != ',')
+            {
+                substring = substring + line[i];
+            }
+            else
+            {
+                data[counter] = substring;
+                counter++;
+                substring = "";
+            }
+        }
+
+        data[counter] = substring;
+
+        return data;
     }
 }
