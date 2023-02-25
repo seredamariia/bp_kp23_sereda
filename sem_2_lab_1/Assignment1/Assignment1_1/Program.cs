@@ -8,7 +8,7 @@ class Program
     static void Main(string[] args)
     {
         string FilePath = "C:\\Users\\Марія\\KPI\\1 курс\\OP\\bp_kp23_sereda\\sem_2_lab_1\\Assignment1\\Assignment1_1\\Task1.txt";
-        string[] lines = { };
+        string[] lines = { "Write a program to create a text file that contains 2 lines.", "The content of the file should be displayed on the screen." };
 
         /*test cases:
             case 1: Write a program to create a text file that contains 2 lines.
@@ -22,7 +22,13 @@ class Program
                     Task 6
         */
 
+        File.WriteAllLines(FilePath, lines);
+
         string[] FileContent = File.ReadAllLines(FilePath);
+        foreach (string line in FileContent)
+        {
+            Console.WriteLine(line);
+        }
 
         /*test cases:
             case 1: Write a program to create a text file that contains 2 lines.
