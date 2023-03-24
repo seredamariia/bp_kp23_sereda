@@ -1,0 +1,1 @@
+In C#, FileStream is a class that is part of the System.IO namespace. It provides a way to read from or write to a file sequentially by using a stream of bytes.
