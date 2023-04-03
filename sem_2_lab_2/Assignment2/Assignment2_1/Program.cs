@@ -28,12 +28,13 @@ class Employee
 
     public decimal Issued()
     {
+        issued = salary - withheld;
         return issued;
     }
 
     public override string ToString()
     {
-        
+        return $"{id,-2} {surname,-10} {salary,10:N2} {withheld,10:N2} {Issued(),10:N2}";
     }
 }
 
@@ -58,6 +59,34 @@ class Program
                                     Malyshev 12500 750
                                     Kochetkova 20000 0
          */
+
+        for (int i = 0; i < employees.Length; i++)
+        {
+            string[] input = Console.ReadLine().Split();
+            int id = i + 1;
+            string surname = input[0];
+            decimal salary = decimal.Parse(input[1]);
+            decimal withheld = decimal.Parse(input[2]);
+            employees[i] = new Employee(id, surname, salary, withheld);
+        }
+
+        Console.WriteLine("\nEmployees data:");
+
+        Console.WriteLine($"{"#",-2} {"Surname",-10} {"Salary",10} {"Withheld",10} {"Issued",10}");
+
+        foreach (Employee employee in employees)
+        {
+            Console.WriteLine(employee);
+        }
+
+        decimal totalSalary = 0, totalWithheld = 0, totalIssued = 0;
+
+        foreach (Employee employee in employees)
+        {
+            totalSalary += employee.GetSalary();
+            totalWithheld += employee.GetWithheld();
+            totalIssued += employee.Issued();
+        }
 
         Console.WriteLine($"\n{"",-2} {"Total",-10} {totalSalary,10:N2} {totalWithheld,10:N2} {totalIssued,10:N2}");
 
