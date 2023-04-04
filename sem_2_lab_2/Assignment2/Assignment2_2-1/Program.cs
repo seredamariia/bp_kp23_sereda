@@ -40,16 +40,30 @@ class Employee
 
 class Payroll
 {
-    
+    private Employee[] employees;
 
     public Payroll(Employee[] employees)
     {
-        
+        this.employees = employees;
     }
 
     public void DisplayPayroll()
     {
-        
+        Console.WriteLine("\nPayroll:");
+        Console.WriteLine($"{"#",-2} {"Surname",-10} {"Salary",10} {"Withheld",10} {"Issued",10}");
+
+        decimal totalSalary = 0, totalWithheld = 0, totalIssued = 0;
+
+        foreach (Employee employee in employees)
+        {
+            Console.WriteLine(employee);
+
+            totalSalary += employee.GetSalary();
+            totalWithheld += employee.GetWithheld();
+            totalIssued += employee.Issued();
+        }
+
+        Console.WriteLine($"\n{"",-2} {"Total",-10} {totalSalary,10:N2} {totalWithheld,10:N2} {totalIssued,10:N2}");
     }
 }
 
