@@ -70,19 +70,16 @@ class Program
             employees[i] = new Employee(id, surname, salary, withheld);
         }
 
-        Console.WriteLine("\nEmployees data:");
+        Console.WriteLine("\nPayroll:");
 
         Console.WriteLine($"{"#",-2} {"Surname",-10} {"Salary",10} {"Withheld",10} {"Issued",10}");
-
-        foreach (Employee employee in employees)
-        {
-            Console.WriteLine(employee);
-        }
 
         decimal totalSalary = 0, totalWithheld = 0, totalIssued = 0;
 
         foreach (Employee employee in employees)
         {
+            Console.WriteLine(employee);
+
             totalSalary += employee.GetSalary();
             totalWithheld += employee.GetWithheld();
             totalIssued += employee.Issued();
