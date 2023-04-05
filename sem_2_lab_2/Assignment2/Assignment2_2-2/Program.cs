@@ -36,15 +36,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        Vessel vessel1 = new SailingVessel();
-        Vessel vessel2 = new Submarine();
+        SailingVessel sailingVessel = new SailingVessel();
+        Submarine submarine = new Submarine();
 
-        vessel1.PrepareToMoving();
-        vessel1.Move();
+        sailingVessel.PrepareToMoving();
+        sailingVessel.Move();
 
         Console.WriteLine();
 
-        vessel2.PrepareToMoving();
-        vessel2.Move();
+        submarine.PrepareToMoving();
+        submarine.Move();
     }
 }
