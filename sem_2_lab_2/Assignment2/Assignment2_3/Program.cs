@@ -65,15 +65,13 @@ class Program
         /*test cases:
             case 1: length1 = 3
                     vector1 = { 1, -5, 3 }
-                    length2 = 4
+                    length2 = 3
                     vector2 = { 10, 4, -1 }
-            case 2: n = 1
-                    length1 = 1
+            case 2: length1 = 1
                     vector1 = { -12 }
                     length2 = 2
                     vector2 = { 5, 0 }
-            case 3: n = 3
-                    length1 = 3
+            case 3: length1 = 3
                     vector1 = { 0, -8, 11 }
                     length2 = 4
                     vector2 = { 0, 0, 50, -2 }
@@ -88,7 +86,7 @@ class Program
                     Product of even indexes: -30
                     Number of zeros: 0
             case 2: Sum of negatives: -12
-                    Product of even indexes: 7
+                    Product of even indexes: -60
                     Number of zeros: 1
             case 3: Sum of negatives: -10
                     Product of even indexes: 0
