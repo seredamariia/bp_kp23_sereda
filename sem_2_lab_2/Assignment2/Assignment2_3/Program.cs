@@ -7,41 +7,80 @@ class Vector
 
     public Vector(int length)
     {
-        
+        vector = new int[length];
     }
 
     public void ReadElementsFromConsole()
     {
-        
+        Console.Write("Enter elements of the vector in one line separating them by spaces: ");
+        string[] input = Console.ReadLine().Split();
+
+        for (int i = 0; i < vector.Length; i++)
+        {
+            vector[i] = int.Parse(input[i]);
+        }
     }
 
     public int SumOfNegatives()
     {
+        int sum = 0;
+
+        for (int i = 0; i < vector.Length; i++)
+        {
+            if (vector[i] < 0)
+            {
+                sum += vector[i];
+            }
+        }
+
         return sum;
     }
 
     public int SumOfNegatives(Vector otherVector)
     {
+        int sum = SumOfNegatives() + otherVector.SumOfNegatives();
+
         return sum;
     }
 
     public int ProductOfEvenIndexes()
     {
+        int product = 1;
+
+        for (int i = 0; i < vector.Length; i += 2)
+        {
+            product *= vector[i];
+        }
+
         return product;
     }
 
     public int ProductOfEvenIndexes(Vector otherVector)
     {
+        int prod = ProductOfEvenIndexes() * otherVector.ProductOfEvenIndexes();
+
         return prod;
     }
 
     public int NumberOfZeros()
     {
+        int count = 0;
+
+        for (int i = 0; i < vector.Length; i++)
+        {
+            if (vector[i] == 0)
+            {
+                count++;
+            }
+        }
+
         return count;
     }
 
     public int NumberOfZeros(Vector otherVector)
     {
+        int count = NumberOfZeros() + otherVector.NumberOfZeros();
+
         return count;
     }
 }
