@@ -3,56 +3,128 @@ using System.Diagnostics;
 
 public class Deque<Item> : IIterator<Item>
 {
+    private Node<Item> first;  // first node
+    private Node<Item> last;   // last node
+    private int count;         // number of items
+
     private class Node<T>
     {
-        
+        public T item;
+        public Node<T> next;
+        public Node<T> prev;
     }
+
+    private Node<Item> current;  // current node for iterator
 
     public Deque()
     {
-        
+        first = null;
+        last = null;
+        count = 0;
     }
 
     public bool IsEmpty()
     {
-        
+        return count == 0;
     }
 
     public int Size()
     {
-        
+        return count;
     }
 
     public void AddFirst(Item item)
     {
-        
+        if (item == null)
+            throw new ArgumentNullException();
+
+        Node<Item> oldFirst = first;
+        first = new Node<Item>
+        {
+            item = item,
+            next = oldFirst,
+            prev = null
+        };
+
+        if (IsEmpty())
+            last = first;
+        else
+            oldFirst.prev = first;
+
+        count++;
     }
 
     public void AddLast(Item item)
     {
-        
+        if (item == null)
+            throw new ArgumentNullException();
+
+        Node<Item> oldLast = last;
+        last = new Node<Item>
+        {
+            item = item,
+            next = null,
+            prev = oldLast
+        };
+
+        if (IsEmpty())
+            first = last;
+        else
+            oldLast.next = last;
+
+        count++;
     }
 
     public Item RemoveFirst()
     {
-        
+        if (IsEmpty())
+            throw new InvalidOperationException("Deque is empty.");
+
+        Item item = first.item;
+        first = first.next;
+        count--;
+
+        if (IsEmpty())
+            last = null;
+        else
+            first.prev = null;
+
+        return item;
     }
 
     public Item RemoveLast()
     {
-        
+        if (IsEmpty())
+            throw new InvalidOperationException("Deque is empty.");
+
+        Item item = last.item;
+        last = last.prev;
+        count--;
+
+        if (IsEmpty())
+            first = null;
+        else
+            last.next = null;
+
+        return item;
     }
 
     public IIterator<Item> Iterator()
     {
-        
+        current = first;
+        return this;
     }
 
-    public bool HasNext;
+    public bool HasNext => current != null;
 
     public Item MoveNext()
     {
-        
+        if (!HasNext)
+            throw new InvalidOperationException("No more elements.");
+
+        Item item = current.item;
+        current = current.next;
+        return item;
     }
 }
 
@@ -66,7 +138,47 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        
+        Deque<int> deque = new Deque<int>();
+
+        deque.AddFirst(10);
+        deque.AddFirst(27);
+        deque.AddLast(33);
+        deque.AddLast(49);
+
+        Console.WriteLine("Size: " + deque.Size());
+        Console.WriteLine("Is Empty: " + deque.IsEmpty());
+
+        Console.Write("Items in order from front to back: ");
+        IIterator<int> iterator = deque.Iterator();
+        while (iterator.HasNext)
+        {
+            Console.Write(iterator.MoveNext() + " ");
+        }
+        Console.WriteLine();
+
+        int removedItem = deque.RemoveFirst();
+        Console.WriteLine("Removed item from the front: " + removedItem);
+
+        removedItem = deque.RemoveLast();
+        Console.WriteLine("Removed item from the back: " + removedItem);
+
+        Console.Write("Items in order from front to back: ");
+        iterator = deque.Iterator();
+        while (iterator.HasNext)
+        {
+            Console.Write(iterator.MoveNext() + " ");
+        }
+        Console.WriteLine();
+        Console.WriteLine();
+
+        Deque<int> test_deque = new Deque<int>();
+        DequeTests.TestConstructor();
+        DequeTests.TestAddFirst(test_deque);
+        DequeTests.TestAddLast(test_deque);
+        DequeTests.TestRemoveFirst(test_deque);
+        DequeTests.TestRemoveLast(test_deque);
+        Console.WriteLine();
+        DequeTests.TestIterator(test_deque);
     }
 
 }
