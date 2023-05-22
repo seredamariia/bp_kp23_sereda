@@ -8,52 +8,109 @@ public interface IIterator<T>
 
 public class RandomizedQueue<Item> : IIterator<Item>
 {
-    
+    private Item[] items; // array to store items
+    private int count; // number of items in the randomized queue
+    private Random random; // random number generator
+    private int current; // current index for iterator
+
     public RandomizedQueue()
     {
-        
+        items = new Item[4];
+        count = 0;
+        random = new Random();
+        current = 0;
     }
 
     public bool IsEmpty()
     {
-        
+        return count == 0;
     }
 
     public int Size()
     {
-        
+        return count;
     }
 
     public void Enqueue(Item item)
     {
-        
+        if (item == null)
+        {
+            throw new ArgumentNullException("Cannot enqueue null item.");
+        }
+
+        if (count == items.Length)
+        {
+            Resize(2 * items.Length); // double the array size if full
+        }
+
+        items[count++] = item;
     }
 
     public Item Dequeue()
     {
-        
+        if (IsEmpty())
+        {
+            throw new InvalidOperationException("Randomized queue is empty.");
+        }
+
+        int randomIndex = random.Next(count);
+        Item item = items[randomIndex];
+
+        // Shift all elements after the dequeued item to the left
+        for (int i = randomIndex; i < count - 1; i++)
+        {
+            items[i] = items[i + 1];
+        }
+
+        items[count - 1] = default(Item); // clear the last item
+        count--;
+
+        if (count > 0 && count == items.Length / 4)
+        {
+            Resize(items.Length / 2); // shrink the array if it's one-quarter full
+        }
+
+        return item;
     }
 
     public Item Sample()
     {
-        
+        if (IsEmpty())
+        {
+            throw new InvalidOperationException("Randomized queue is empty.");
+        }
+
+        int randomIndex = random.Next(count);
+        return items[randomIndex];
     }
 
     public IIterator<Item> Iterator()
     {
-        
+        current = 0; // Reset iterator to the beginning
+        return this;
     }
 
-    public bool HasNext { get {  } }
+    public bool HasNext { get { return current < count; } }
 
     public Item MoveNext()
     {
-        
+        if (!HasNext)
+        {
+            throw new InvalidOperationException("No more elements.");
+        }
+
+        Item item = items[current++];
+        return item;
     }
 
     private void Resize(int capacity)
     {
-        
+        Item[] resizedItems = new Item[capacity];
+        for (int i = 0; i < count; i++)
+        {
+            resizedItems[i] = items[i];
+        }
+        items = resizedItems;
     }
 }
 
@@ -61,6 +118,38 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        RandomizedQueue<string> queue = new RandomizedQueue<string>();
+
+        queue.Enqueue("A");
+        queue.Enqueue("B");
+        queue.Enqueue("C");
+        queue.Enqueue("D");
+        queue.Enqueue("E");
+
+        Console.WriteLine("Queue size: " + queue.Size());
+
+        Console.Write("Printing all items in the queue: ");
+        IIterator<string> iterator = queue.Iterator();
+        while (iterator.HasNext)
+        {
+            string item = iterator.MoveNext();
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+
+        Console.WriteLine("Sample item: " + queue.Sample());
+        Console.WriteLine("Dequeued item: " + queue.Dequeue());
+
+        Console.Write("Printing all items in the queue: ");
+        iterator = queue.Iterator();
+        while (iterator.HasNext)
+        {
+            string item = iterator.MoveNext();
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+        Console.WriteLine();
+
         RandomizedQueue<int> test_queue = new RandomizedQueue<int>();
         RandomizedQueueTests.TestConstructor();
         RandomizedQueueTests.TestEnqueue(test_queue);
