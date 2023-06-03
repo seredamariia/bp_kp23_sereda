@@ -1,0 +1,2 @@
+Write a program to create a text file that contains 2 lines.
+The content of the file should be displayed on the screen.

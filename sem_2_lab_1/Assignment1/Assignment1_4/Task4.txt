@@ -1,0 +1,10 @@
+Findlay,Cervantes,92
+Lana,Beard,67
+Fleur,Salazar,52
+Gertrude,Caldwell,30
+Claude,Bradshaw,84
+Woody,Bishop,33
+Sana,Mueller,64
+Alys,Burns,44
+Keaton,Bernard,71
+Will,Gordon,55
