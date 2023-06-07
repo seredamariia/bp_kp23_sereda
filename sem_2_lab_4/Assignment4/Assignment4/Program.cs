@@ -140,12 +140,26 @@ public class Program
 
             if (dictionary.Contains(word))
             {
-                Console.WriteLine("ok");
+                Console.WriteLine("OK");
             }
             else
             {
-                Console.WriteLine("WrongSpelling");
+                Console.WriteLine("Wrong Spelling");
             }
         }
+
+        /* test cases:
+            case 1: pie
+            case 2: piee
+            case 3: cabinet
+            case 4: cabine
+            case 5: cat */
+
+        /* test cases:
+            case 1: OK
+            case 2: Wrong Spelling
+            case 3: OK
+            case 4: Wrong Spelling
+            case 5: Wrong Spelling */
     }
 }
