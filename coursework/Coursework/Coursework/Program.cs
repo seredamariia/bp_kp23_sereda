@@ -537,17 +537,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        /*fanGuide.DisplaySportsmenByCitizenship("New Zealand");;*/
-        /*fanGuide.DisplaySportsmenByClub("Griffith University");*/
-        /*fanGuide.DisplaySportsmenByWeight("80 - 70");*/
-        /*fanGuide.DisplaySportsmenBySportCategory("100 m SWIMMING");
-        fanGuide.DisplaySportsmenBySport("SWIMMING");*/
-
-        /*fanGuide.FindRecordHolder("swimming", "fastest");*/
-        /*fanGuide.DisplayRecordHolder("100 m swimming");*/
-
-        /*Console.ReadLine();*/
-
         FanGuide fanGuide = new FanGuide();
         fanGuide.LoadFromFile("C:\\Users\\Марія\\KPI\\1 курс\\OP\\bp_kp23_sereda\\coursework\\Coursework\\Coursework\\sportsmen-data.txt");
 
@@ -648,3 +637,5 @@ public class Program
         Console.WriteLine("Thank you for using the Sportsmen Fan Guide!");
     }
 }
+
+
