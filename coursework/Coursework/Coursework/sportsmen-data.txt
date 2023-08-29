@@ -1,0 +1,54 @@
+Emma Jennifer McKeon,1994,180 cm,60 kg,Australian,swimming,50 m swimming,Griffith University,23.81 sec
+Jacqueline Joyner-Kersee,1962,178 cm,70 kg,American,athletics,long jump,Tiger World Class Athletic Club,7.49 m
+Helena Fibingerová,1949,179 cm,90 kg,Czech,athletics,shot put,TeamCZ,22.50 m
+Britta Steffen,1983,180 cm,60 kg,German,swimming,50 m swimming,SG Neukölln,23.73 sec
+Austra Skujytė,1979,188 cm,76 kg,Lithuanian,athletics,decathlon,TeamLT,8358 points
+Brittney Davon Reese,1986,173 cm,64 kg,American,athletics,long jump,Nike,7.31 m
+Pernille Blume,1994,170 cm,58 kg,Danish,swimming,50 m swimming,CN Antibes,23.75 sec
+Claudia Losch,1960,181 cm,84 kg,German,athletics,shot put,TV 1860 Fürth,21.46 m
+Tianna Madison,1985,168 cm,61 kg,American,athletics,long jump,Nike,7.17 m
+Kaori Sakamoto,2000,159 cm,49 kg,Japanese,figure skating,combined total,Sysmex Kobe,236.09 points
+Sosthene-Taroum Moguenara,1989,176 cm,65 kg,German,athletics,long jump,TV Wattenscheid 01,7.16 m
+Dame Valerie Kasanita Adams,1984,193 cm,120 kg,New Zealand,athletics,shot put,TeamNZ,20.98 m
+Ranomi Kromowidjojo,1990,180 cm,67 kg,Dutch,swimming,50 m swimming,Team Iron (ISL),23.85 sec
+Brigetta LaShea Barrett,1990,183 cm,64 kg,American,athletics,high jump,Arizona Wildcats,2.04 m
+Marie Collonvillé,1973,163 cm,55 kg,French,athletics,decathlon,TeamFRA,8150 points
+Dara Grace Torres,1967,180 cm,68 kg,American,swimming,50 m swimming,Culver City Swim Club,24.07 sec
+Ulrike Nasse-Meyfarth,1956,188 cm,70 kg,German,athletics,high jump,ASV Köln,2.03 m
+Vita Pavlysh,1969,174 cm,85 kg,Ukrainian,athletics,shot put,TeamUA,20.73 m
+Hinkelien Schreuder,1984,178 cm,61 kg,Dutch,swimming,50 m swimming,Nationaal Zweminstituut Eindhov,23.32 sec
+Antonietta Di Martino,1978,169 cm,57 kg,Italian,athletics,high jump,G.S. Fiamme Gialle,2.03 m
+Kaylee Rochelle McKeown,2001,175 cm,60 kg,Australian,swimming,100 m swimming,Griffith University,57.47 sec
+Ruth Beitia Vila,1979,192 cm,71 kg,Spanish,athletics,high jump,Atletismo Piélagos,2.02 m
+Sandi Morris,1992,173 cm,62 kg,American,athletics,pole vault,Arkansas Razorbacks,5.00 m
+Jeanette Ottesen,1987,178 cm,70 kg,Danish,swimming,50 m swimming,Farum,23.49 sec
+Elena Vallortigara,1991,184 cm,68 kg,Italian,athletics,high jump,C.S. Carabinieri,2.02 m
+Mona Steigauf,1970,178 cm,61 kg,German,athletics,decathlon,TeamGER,7885 points
+Inge Dekker,1985,183 cm,67 kg,Dutch,swimming,50 m swimming,Nationaal Zweminstituut Eindhov,23.53 sec
+Vashti Cunningham,1998,186 cm,55 kg,American,athletics,high jump,Nike,2.02 m
+Eliza McCartney,1996,179 cm,66 kg,New Zealand,athletics,pole vault,North Harbour Bays Athletics,4.94 m
+Rika Kihira,2002,155 cm,45 kg,Japanese,figure skating,combined total,Toyota Motor Corporation,233.12 points
+Tiffany Lott-Hogan,1975,172 cm,63 kg,American,athletics,decathlon,TeamUSA,7577 points
+Sarah Fredrika Sjöström,1993,182 cm,76 kg,Swedish,swimming,100 m swimming,Energy Standard,55.48 sec
+Jessica Taylor,1988,173 cm,56 kg,British,athletics,decathlon,TeamUK,6878 points
+Anna Rogowska,1981,171 cm,57 kg,Polish,athletics,pole vault,SKLA Sopot,4.83 m
+Wakaba Higuchi,2001,152 cm,46 kg,Japanese,figure skating,short program,Meiji University,79.73 points
+Michaela Meijer,1993,172 cm,60 kg,Swedish,athletics,pole vault,Örgryte IS,4.83 m
+Barbora Špotáková,1981,182 cm,80 kg,Czech,athletics,decathlon,TeamCZ,6749 points
+Béryl Gastaldello,1995,178 cm,68 kg,French,swimming,50 m swimming,Cercle des Nageurs de Marseille,23.66 sec
+Monika Zofia Pyrek-Rokita,1980,170 cm,57 kg,Polish,athletics,pole vault,MKL Szczecin,4.82 m
+You Young,2004,166 cm,48 kg,South Korean,figure skating,short program,Korean Skating Union,78.22 points
+Madison Maree Wilson,1994,179 cm,61 kg,Australian,swimming,50 m swimming,Marion,23.73 sec
+Alysha Eveline Newman,1994,175 cm,63 kg,Canadian,athletics,pole vault,University of Miami,4.82 m
+Emma Jennifer McKeon,1994,180 cm,60 kg,Australian,swimming,100 m swimming,Griffith University,51.96 sec
+Paula Jane Radcliffe,1973,173 cm,54 kg,British,athletics,marathon,Bedford & County Athletic Club,2:15:25 h
+Rika Kihira,2002,155 cm,45 kg,Japanese,figure skating,short program,Toyota Motor Corporation,83.97 points
+Jennifer Beth Thompson,1973,177 cm,69 kg,American,swimming,100 m swimming,Seacoast Swimming Association,54.95 sec
+Letesenbet Gidey,1998,166 cm,50 kg,Ethiopian,athletics,marathon,NN Running Team,2:16:49 h
+Kaori Sakamoto,2000,159 cm,49 kg,Japanese,figure skating,short program,Sysmex Kobe,80.32 points
+Nicole Lee Haislett,1972,173 cm,64 kg,American,swimming,100 m swimming,St. Pete Aquatics Club,55.17 sec
+Almaz Ayana Eba,1991,166 cm,47 kg,Ethiopian,athletics,marathon,NN Running Team,2:17:20 h
+Rika Kihira,2002,155 cm,45 kg,Japanese,figure skating,free skating,Toyota Motor Corporation,154.72 points
+Jodie Clare Henry,1983,176 cm,63 kg,Australian,swimming,100 m swimming,Chandler Swimming Club,53.84 sec
+Genzebe Dibaba Keneni,1991,168 cm,52 kg,Ethiopian,athletics,marathon,NN Running Team,2:18:05 h
+Kaori Sakamoto,2000,159 cm,49 kg,Japanese,figure skating,free skating,Sysmex Kobe,155.77 points
